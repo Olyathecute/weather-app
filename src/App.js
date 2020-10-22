@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import logo from './logo.svg'
+import axios from 'axios'
+import './App.css'
+import Input from './Input'
+import CityInfo from './Info/CityInfo'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [city, setCity] = useState('')
+
+    function inputCity(city) {
+        setCity(city)
+    }
+
+    return (
+        <div className="App">
+            <header className="App-header">
+                <img src={logo} className="App-logo" alt="logo" />
+            </header>
+            <div className="Data">
+                <Input onInput={inputCity} />
+                {city && <CityInfo city={city} />}
+            </div>
+        </div>
+    )
 }
 
-export default App;
+export default App
+
+// New York    Moscow   Sayanogorsk
